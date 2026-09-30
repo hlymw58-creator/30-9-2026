@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>واجب حديث تحريم هجر المسلم - منصة الشافعي الصغير</title>
+    <title>اختبار حديث تحريم هجر المسلم - منصة الشافعي الصغير</title>
     <style>
         :root {
             --primary-color: #4f46e5;
@@ -64,7 +64,6 @@
             }
         }
 
-        /* تصميم احترافي لاسم المنصة في الخلفية/الأعلى */
         .brand-header {
             text-align: center;
             font-size: 1.1rem;
@@ -263,7 +262,6 @@
             gap: 12px;
         }
 
-        /* تنسيق مربعات الاختيارات مع لون بارز وواضح عند الاختيار */
         .option-label {
             display: flex;
             align-items: center;
@@ -284,7 +282,7 @@
             transform: translateX(-3px);
         }
 
-        /* اللون الواضح والبارز عند اختيار الإجابة */
+        /* تلوين الخيار المختار بوضوح تام */
         .option-label.selected {
             background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
             border-color: var(--primary-color);
@@ -299,29 +297,6 @@
             width: 20px;
             height: 20px;
             flex-shrink: 0;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            font-size: 15px;
-            outline: none;
-            resize: vertical;
-            min-height: 120px;
-            margin-bottom: 10px;
-        }
-
-        textarea:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
-        }
-
-        input[type="file"] {
-            font-size: 0.9rem;
-            color: #475569;
-            margin-top: 5px;
         }
 
         .loader-container {
@@ -379,18 +354,13 @@
             margin-bottom: 12px;
         }
 
-        .mistake-card, .essay-review-card {
+        .mistake-card {
             background: #fff5f5;
             border: 1px solid #fed7d7;
             border-radius: 10px;
             padding: 14px;
             margin-bottom: 12px;
             text-align: right;
-        }
-
-        .essay-review-card {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
         }
 
         .mistake-q {
@@ -437,7 +407,6 @@
             font-size: 0.9rem;
         }
 
-        /* نافذة تأكيد التسليم / المراجعة المنبثقة */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -479,14 +448,14 @@
 
         <!-- شاشة تسجيل الاسم -->
         <div id="login-screen" class="screen active">
-            <h2>واجب حديث تحريم هجر المسلم</h2>
+            <h2>اختبار حديث تحريم هجر المسلم</h2>
             <p class="subtitle">الرجاء إدخال اسمك الكامل للبدء (الوقت: 60 دقيقة - نسبة النجاح: 65% - الحد الأقصى للمحاولات: 6)</p>
             <div class="attempts-badge" id="attempts-info-badge">عدد المحاولات المتبقية: 6 من 6</div>
             <div class="form-group">
                 <label for="student-name">اسم الطالب:</label>
                 <input type="text" id="student-name" placeholder="اكتب اسمك الثلاثي هنا..." autocomplete="off">
             </div>
-            <button class="btn" id="start-btn" onclick="startQuiz()">بدء الواجب الآن</button>
+            <button class="btn" id="start-btn" onclick="startQuiz()">بدء الاختبار الآن</button>
         </div>
 
         <!-- شاشة الأسئلة (سؤال بسؤال) -->
@@ -510,7 +479,7 @@
         <div id="loading-screen" class="screen">
             <div class="loader-container">
                 <div class="spinner"></div>
-                <h2>جاري تصحيح الواجب وحفظ النتيجة...</h2>
+                <h2>جاري تصحيح الاختبار وحفظ النتيجة...</h2>
                 <p class="subtitle">يرجى الانتظار لتسجيل محاولتك</p>
             </div>
         </div>
@@ -518,13 +487,12 @@
         <!-- شاشة النتيجة النهائية -->
         <div id="result-screen" class="screen">
             <div class="result-box">
-                <h2>نتيجة الواجب</h2>
+                <h2>نتيجة الاختبار</h2>
                 <p id="result-name" style="font-weight: 600; font-size: 1.1rem; color: #475569;"></p>
                 <div class="score-circle" id="score-display">0%</div>
                 <div class="result-message" id="result-message"></div>
                 
                 <div id="mistakes-container"></div>
-                <div id="essay-review-container"></div>
 
                 <div id="action-btn-container" style="margin-top: 20px;"></div>
             </div>
@@ -535,7 +503,7 @@
     <div class="modal-overlay" id="confirm-modal">
         <div class="modal-box">
             <h3 style="color: var(--primary-color); margin-bottom: 10px;">تأكيد إنهاء الاختبار</h3>
-            <p style="color: #475569; margin-bottom: 20px; font-size: 0.95rem;">هل أنت متأكد من رغبتك في إنهاء الواجب؟ يمكنك مراجعة إجاباتك أو التسليم فوراً.</p>
+            <p style="color: #475569; margin-bottom: 20px; font-size: 0.95rem;">هل أنت متأكد من رغبتك في إنهاء الاختبار؟ يمكنك مراجعة إجاباتك أو التسليم فوراً.</p>
             <div style="display: flex; flex-direction: column; gap: 10px;">
                 <button class="btn btn-secondary" onclick="closeModalAndReview()">🔍 مراجعة إجاباتي أولاً</button>
                 <button class="btn" onclick="confirmAndSubmit()">🚀 نعم، سلم الاختبار مباشرة</button>
@@ -551,136 +519,71 @@
         let currentQuestionIndex = 0;
         const maxAttempts = 6;
 
+        // الأسئلة بالترتيب وإجاباتها الصحيحة الدقيقة
         const questionsList = [
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (1 من 10)",
-                question: 'ما المعنى المراد بـ "الهجر" في حديث تحريم هجر المسلم؟',
-                options: [
-                    "أ) السفر الطويل لبلاد بعيدة.",
-                    "ب) ترك الإنسان لأخيه المسلم وقطع الكلام معه فوق ثلاث ليالٍ.",
-                    "ج) الانشغال بالعمل عن أداء الصلوات.",
-                    "د) الامتناع عن أكل الطعام الطيب."
-                ],
-                correct: "ب"
-            },
-            {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (2 من 10)",
-                question: "يباح للمسلم أن يهجر أخيه المسلم مطلقاً متى ما حدث بينهما أي خلاف يسير.",
+                section: "أولاً: أسئلة الصح والخطأ (1 من 5)",
+                question: "من ينتظر السلام من غيره مقدم في الفضل على البادئ بالسلام",
                 options: ["صح", "خطأ"],
                 correct: "خطأ"
             },
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (3 من 10)",
-                question: "ما هي المدة المحددة التي يجوز فيها للإنسان أن يعرض عن أخيه المسلم بسبب خلاف دنيوي؟",
-                options: [
-                    "أ) يوم وليلة.",
-                    "ب) ثلاثة أيام بليلتهن.",
-                    "ج) أسبوع كامل.",
-                    "د) شهر واحد."
-                ],
-                correct: "ب"
+                section: "أولاً: أسئلة الصح والخطأ (2 من 5)",
+                question: "(فيعرض) أي يقبل عليه بوجهه",
+                options: ["صح", "خطأ"],
+                correct: "خطأ"
             },
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (4 من 10)",
-                question: "إذا التقى المسلمان فأعرض هذا وترك هذا، فإن خيرهما هو الذي يبدأ بالسلام.",
+                section: "أولاً: أسئلة الصح والخطأ (3 من 5)",
+                question: "نفي الحل لا يعني الحرمة",
+                options: ["صح", "خطأ"],
+                correct: "خطأ"
+            },
+            {
+                section: "أولاً: أسئلة الصح والخطأ (4 من 5)",
+                question: "معنى (إخوة لعلات) اي الإخوة لأب من أمهات شتى",
                 options: ["صح", "خطأ"],
                 correct: "صح"
             },
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (5 من 10)",
-                question: "أي مما يلي يعبر عن الحكمة من تحديد مدة الهجر بثلاثة أيام؟",
-                options: [
-                    "أ) لتشجيع الخصومة بين المسلمين.",
-                    "ب) لأنها مدة كفيلة بهدوء النفس وزوال الغضب وعودة العقل.",
-                    "ج) لكي يبتعد المسلم عن أخيه نهائياً.",
-                    "د) لا توجد حكمة محددة."
-                ],
-                correct: "ب"
-            },
-            {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (6 من 10)",
-                question: "يجوز هجر المسلم فوق ثلاثة أيام إذا كان الهجر بسبب مصلحة دينية أو لدفع شره.",
+                section: "أولاً: أسئلة الصح والخطأ (5 من 5)",
+                question: "خص النبي صلى الله عليه وسلم عيسى ابن مريم بالذكر دون غيره؛ لأنه بعث بالمسيحية",
                 options: ["صح", "خطأ"],
-                correct: "صح"
+                correct: "خطأ"
             },
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (7 من 10)",
-                question: "ما هو عاقبة من مات وهو هاجر لأخيه المسلم فوق ثلاث بلا عذر شرعي؟",
-                options: [
-                    "أ) يدخل الجنة مباشرة.",
-                    "ب) يرفع عمله ولا يغفر له حتى يصطلحا.",
-                    "ج) لا يضره ذلك شيئاً.",
-                    "د) يضاعف أجره."
-                ],
-                correct: "ب"
+                section: "ثانياً: أسئلة الاختيار من متعدد (6 من 10)",
+                question: "هجر المسلم في الثلاث ليال:",
+                options: ["جائز", "مكروه", "حرام"],
+                correct: "جائز"
             },
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (8 من 10)",
-                question: "الإسلام يدعو إلى التراحم والتآلف وينهى عن الفرقة والقطيعة.",
-                options: ["صح", "خطأ"],
-                correct: "صح"
+                section: "ثانياً: أسئلة الاختيار من متعدد (7 من 10)",
+                question: "مات خالد بن زيد بن كليب في:",
+                options: ["بلاد الشام", "المدينة المنورة", "بلاد الروم"],
+                correct: "بلاد الروم"
             },
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (9 من 10)",
-                question: 'من هو الشخص الذي يُعد "البادئ بالخير" في حالة الخصومة؟',
-                options: [
-                    "أ) الذي يستمر في مقاطعة أخيه.",
-                    "ب) الذي يبادر بإلقاء السلام والتحية لإنهاء القطيعة.",
-                    "ج) الذي يتحدث بالسوء عن أخيه.",
-                    "د) الذي يرفض الصلح نهائياً."
-                ],
-                correct: "ب"
+                section: "ثانياً: أسئلة الاختيار من متعدد (8 من 10)",
+                question: "العلل الشرب بعد :",
+                options: ["النوم", "الاكل", "الشرب"],
+                correct: "الشرب"
             },
             {
-                type: "mcq",
-                section: "أولاً: الأسئلة الموضوعية (10 من 10)",
-                question: "القطيعة بين المسلمين تؤدي إلى تفكك المجتمع وضياع قوته.",
-                options: ["صح", "خطأ"],
-                correct: "صح"
+                section: "ثانياً: أسئلة الاختيار من متعدد (9 من 10)",
+                question: "الاخوه لأبوين يقال لهم:",
+                options: ["أولاد الأخياف", "أولاد الأعيان", "أولاد العلات"],
+                correct: "أولاد الأعيان"
             },
             {
-                type: "essay",
-                section: "ثانياً: الأسئلة المقالية (س11)",
-                question: "وضح الحكمة الشرعية والاجتماعية من تحريم هجر المسلم لأخيه فوق ثلاث ليالٍ؟",
-                model: "الحكمة هي إعطاء فرصة للنفس ليهدأ غضبها وتثوب إلى رشدها، مع منع تحول الخلافات البسيطة إلى عداوة مستدامة تفكك النسيج الاجتماعي للمسلمين."
-            },
-            {
-                type: "essay",
-                section: "ثانياً: الأسئلة المقالية (س12)",
-                question: "اذكر الحالة المستثناة التي يجوز فيها للمسلم أن يهجر أخاه المسلم مدة تزيد عن ثلاثة أيام؟",
-                model: "يجوز الهجر فوق ثلاث إذا كان في هجره مصلحة دينية لردعه عن معصية أو بدعة يجهر بها ولم ينتهِ بالنصح والإرشاد."
-            },
-            {
-                type: "essay",
-                section: "ثانياً: الأسئلة المقالية (س13)",
-                question: "ماذا يجب على المسلم إذا التقى بأخيه الذي بينه وبينه خصومة، استناداً لهدي الحديث الشريف؟",
-                model: "يجب عليه أن يتجاوز الخلاف ويبادر بإلقاء السلام والتحية، ليكون هو الأخير خيراً والأكسب للأجر والثواب عند الله تعالى."
-            },
-            {
-                type: "essay",
-                section: "ثانياً: الأسئلة المقالية (س14)",
-                question: "كيف يؤثر انتشار خلق التسامح وترك الهجر على ترابط المجتمع الإسلامي؟",
-                model: "يؤدي إلى نشر المحبة، والمودة، والتعاون، ويزيل الأحقاد والضغائن من الصدور، ويجعل المجتمع قوياً ومتماسكاً في مواجهة التحديات."
-            },
-            {
-                type: "essay",
-                section: "ثانياً: الأسئلة المقالية (س15)",
-                question: 'اكتب باختصار ما تدل عليه جملة "وخيرهما الذي يبدأ بالسلام" من معاني الأخلاق الفاضلة.',
-                model: "تدل على تواضع المسلم، وسمو أخلاقه، وتقديم مصلحة الأخوة والمحبة في الله على حظوظ النفس والكبرياء الشخصي."
+                section: "ثانياً: أسئلة الاختيار من متعدد (10 من 10)",
+                question: "موقع جملة (يعرض هذا) :",
+                options: ["جملة مستأنفة", "حال من فاعل\"يهجر\" مع مفعوله", "الاثنين معا"],
+                correct: "الاثنين معا"
             }
         ];
 
         let userAnswers = new Array(questionsList.length).fill("");
-        let userFiles = new Array(questionsList.length).fill(null);
 
         window.onload = function() {
             updateAttemptsUI();
@@ -749,33 +652,19 @@
             html += `<div class="question-card">`;
             html += `<div class="question-title">${currentQuestionIndex + 1}. ${q.question}</div>`;
 
-            if (q.type === "mcq") {
-                html += `<div class="options-grid">`;
-                q.options.forEach(opt => {
-                    let optValue = opt.startsWith("أ)") ? "أ" :
-                                   opt.startsWith("ب)") ? "ب" :
-                                   opt.startsWith("ج)") ? "ج" :
-                                   opt.startsWith("د)") ? "د" : opt;
-                    
-                    let isChecked = userAnswers[currentQuestionIndex] === optValue ? "checked" : "";
-                    let isSelectedClass = isChecked ? "selected" : "";
+            html += `<div class="options-grid">`;
+            q.options.forEach(opt => {
+                let isChecked = userAnswers[currentQuestionIndex] === opt ? "checked" : "";
+                let isSelectedClass = isChecked ? "selected" : "";
 
-                    html += `
-                        <label class="option-label ${isSelectedClass}">
-                            <input type="radio" name="current_q" value="${optValue}" ${isChecked} onchange="saveCurrentAnswer('${optValue}', this)"> 
-                            ${opt}
-                        </label>
-                    `;
-                });
-                html += `</div>`;
-            } else if (q.type === "essay") {
-                let savedText = userAnswers[currentQuestionIndex] || "";
                 html += `
-                    <textarea placeholder="اكتب إجابتك هنا..." oninput="saveEssayText(this)">${savedText}</textarea>
-                    <label style="font-size: 0.85rem; font-weight: normal; margin-top: 5px;">أو ارفع صورة الإجابة (اختياري):</label>
-                    <input type="file" accept="image/*" onchange="saveEssayFile(this)">
+                    <label class="option-label ${isSelectedClass}">
+                        <input type="radio" name="current_q" value="${opt}" ${isChecked} onchange="saveCurrentAnswer('${opt}', this)"> 
+                        ${opt}
+                    </label>
                 `;
-            }
+            });
+            html += `</div>`;
 
             html += `</div>`;
             container.innerHTML = html;
@@ -801,16 +690,6 @@
             const card = radio.closest('.question-card');
             card.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
             radio.closest('.option-label').classList.add('selected');
-        }
-
-        function saveEssayText(textarea) {
-            userAnswers[currentQuestionIndex] = textarea.value.trim();
-        }
-
-        function saveEssayFile(input) {
-            if (input.files && input.files[0]) {
-                userFiles[currentQuestionIndex] = input.files[0];
-            }
         }
 
         function nextQuestion() {
@@ -845,7 +724,7 @@
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     if (!isSubmitted) {
-                        alert("انتهى الوقت المخصص للواجب! سيتم إرسال إجاباتك تلقائياً.");
+                        alert("انتهى الوقت المخصص للاختبار! سيتم إرسال إجاباتك تلقائياً.");
                         submitQuiz(true);
                     }
                     return;
@@ -919,31 +798,13 @@
 
         function calculateResults() {
             let score = 0;
-            const totalMcq = 10;
+            const total = questionsList.length;
             let mistakesHTML = "";
             let mistakesCount = 0;
 
-            for (let i = 0; i < totalMcq; i++) {
+            for (let i = 0; i < total; i++) {
                 const q = questionsList[i];
-                let studentAns = userAnswers[i] || "";
-
-                let correctFullText = "";
-                q.options.forEach(opt => {
-                    let optVal = opt.startsWith("أ)") ? "أ" :
-                                 opt.startsWith("ب)") ? "ب" :
-                                 opt.startsWith("ج)") ? "ج" :
-                                 opt.startsWith("د)") ? "د" : opt;
-                    if (optVal === q.correct) correctFullText = opt;
-                });
-
-                let studentAnsFullText = studentAns || "لم يتم الإجابة";
-                q.options.forEach(opt => {
-                    let optVal = opt.startsWith("أ)") ? "أ" :
-                                 opt.startsWith("ب)") ? "ب" :
-                                 opt.startsWith("ج)") ? "ج" :
-                                 opt.startsWith("د)") ? "د" : opt;
-                    if (optVal === studentAns) studentAnsFullText = opt;
-                });
+                let studentAns = userAnswers[i] || "لم يتم الإجابة";
 
                 if (studentAns === q.correct) {
                     score++;
@@ -953,34 +814,15 @@
                         <div class="mistake-card">
                             <div class="mistake-q">${i + 1}. ${q.question}</div>
                             <div class="mistake-details">
-                                <span class="wrong-ans">❌ إجابتك: ${studentAnsFullText}</span>
-                                <span class="correct-ans">✅ الإجابة الصحيحة: ${correctFullText}</span>
+                                <span class="wrong-ans">❌ إجابتك: ${studentAns}</span>
+                                <span class="correct-ans">✅ الإجابة الصحيحة: ${q.correct}</span>
                             </div>
                         </div>
                     `;
                 }
             }
 
-            let essayHTML = "";
-            for (let i = 10; i < questionsList.length; i++) {
-                const q = questionsList[i];
-                let textVal = userAnswers[i] || "لم يتم كتابة نص";
-                let fileObj = userFiles[i];
-                let fileInfo = fileObj ? `📸 تم إرفاق صورة: ${fileObj.name}` : "لم يتم إرفاق صورة";
-
-                essayHTML += `
-                    <div class="essay-review-card">
-                        <div class="mistake-q">س${i + 1}: ${q.question}</div>
-                        <div class="mistake-details" style="gap: 6px;">
-                            <div><strong>إجابتك النصية:</strong> ${textVal}</div>
-                            <div><strong>المرفق:</strong> ${fileInfo}</div>
-                            <div class="correct-ans" style="margin-top: 4px;"><strong>💡 النموذج الصحيح للإجابة:</strong><br>${q.model}</div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            const percentage = Math.round((score / totalMcq) * 100);
+            const percentage = Math.round((score / total) * 100);
             const isPassed = percentage >= 65;
 
             let { attempts } = getAttemptsData();
@@ -997,37 +839,29 @@
             
             const messageEl = document.getElementById("result-message");
             const mistakesContainer = document.getElementById("mistakes-container");
-            const essayContainer = document.getElementById("essay-review-container");
             const actionContainer = document.getElementById("action-btn-container");
 
             if (mistakesCount === 0) {
                 mistakesContainer.innerHTML = `
                     <div class="no-mistakes">
-                        🌟 ممتاز يا بطل! لقد أجبت على جميع الأسئلة الموضوعية بدون أي أخطاء!
+                        🌟 ممتاز يا بطل! لقد أجبت على جميع الأسئلة بدون أي أخطاء!
                     </div>
                 `;
             } else {
                 mistakesContainer.innerHTML = `
                     <div class="review-section">
-                        <div class="review-title">📝 مراجعة أخطاء الأسئلة الموضوعية:</div>
+                        <div class="review-title">📝 مراجعة الأخطاء والإجابات الصحيحة:</div>
                         ${mistakesHTML}
                     </div>
                 `;
             }
 
-            essayContainer.innerHTML = `
-                <div class="review-section">
-                    <div class="review-title" style="color: var(--primary-color);">📖 مراجعة الأسئلة المقالية وإجاباتك النموذجية:</div>
-                    ${essayHTML}
-                </div>
-            `;
-
             if (isPassed) {
-                messageEl.innerText = "🎉 مبروك! لقد نجحت في الواجب بتفوق.";
+                messageEl.innerText = "🎉 مبروك! لقد نجحت في الاختبار بتفوق.";
                 messageEl.style.color = "var(--success-color)";
                 playSound(true);
             } else {
-                messageEl.innerText = "❌ للأسف، لم تصل لنسبة النجاح المطلوبة في الأسئلة الموضوعية (65%).";
+                messageEl.innerText = "❌ للأسف، لم تصل لنسبة النجاح المطلوبة (65%).";
                 messageEl.style.color = "var(--danger-color)";
                 playSound(false);
             }
